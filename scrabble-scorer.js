@@ -123,7 +123,7 @@ function scorerPrompt(word) {
   return scoringAlgorithms[scoringType];
 };
 
-newPointStructure = function transform(oldPointStructure) {
+ function transform(oldPointStructure) {
   let newObj = {};
   for (const [key, value] of Object.entries(oldPointStructure)) {
     value.map(function(val) {
@@ -131,6 +131,7 @@ newPointStructure = function transform(oldPointStructure) {
       newObj = { ...newObj, ...keyVal };
     })
   }
+  newPointStructure = newObj;
   return newObj;
 };
 
