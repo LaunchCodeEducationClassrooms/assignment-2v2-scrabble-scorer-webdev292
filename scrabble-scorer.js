@@ -53,8 +53,13 @@ let scrabbleScoreObject = {
 
 };
 
-function simpleScorr(word) {
+function simpleScore(word) {
   return word.length;
+}
+
+function newPointStructure(){
+  let transformedObj = transform(oldPointStructure);
+  return transformedObj;
 }
 
 let simpleScoreObject = {
@@ -131,7 +136,6 @@ function scorerPrompt(word) {
       newObj = { ...newObj, ...keyVal };
     })
   }
-  newPointStructure = newObj;
   return newObj;
 };
 
