@@ -55,13 +55,6 @@ newPointStructure = function(){
   return transformedObj;
 }
 
-let simpleScoreObject = {
-  'name': 'simple score',
-  'description': 'each letter worth 1 point',
-  'scorerFunction': function(word) { return simpleScore(word); }
-
-};
-
 function vowelBonusScore(word) {
   let vowels = ['A', 'E', 'I', 'O', 'U'];
   word = word.toUpperCase();
@@ -76,28 +69,21 @@ function vowelBonusScore(word) {
   return score;
 }
 
-let vowelBonusScoreObject = {
-  'name': 'vowel BonusScore',
-  'description': 'vowels are worth 3 points, and each consonant is     worth 1   point',
-  'scorerFunction': function(word) { return vowelBonusScore(word); }
-
-};
-//let scrabbleScore = 0;
 
 const scoringAlgorithms = [{
   name: "simple score",
   description: "each letter worth 1 point",
-  scorerFunction: simpleScore
+  scoringFunction: simpleScore
 },
 {
   name: "Bonus vowel",
   description: "vowels are 3 points, consonents are 1 point.",
-  scorerFunction: vowelBonusScore
+  scoringFunction: vowelBonusScore
 },
 {
   name: "scrabbleScore",
   description: "the scroring scoringAlgorithms.",
-  scorerFunction: scrabbleScore,
+  scoringFunction: scrabbleScore,
 }
 ];
 
@@ -110,13 +96,13 @@ function scorerPrompt(word) {
   console.log('Seleted algorithm is ', scoringAlgorithms[scoringType])
   if (scoringType === 0) {
     console.log("algorithm name: ", scoringAlgorithms[0].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[0].scorerFunction(inputWord));
+    console.log("scorerFunction result: ", scoringAlgorithms[0].scoringFunction(inputWord));
   } else if (scoringType === 1) {
     console.log("algorithm name: ", scoringAlgorithms[1].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[1].scorerFunction(inputWord));
+    console.log("scorerFunction result: ", scoringAlgorithms[1].scoringFunction(inputWord));
   } else if (scoringType === 2) {
     console.log("algorithm name: ", scoringAlgorithms[2].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[2].scorerFunction(inputWord, newPointStructure()));
+    console.log("scorerFunction result: ", scoringAlgorithms[2].scoringFunction(inputWord, newPointStructure()));
   }
   return scoringAlgorithms[scoringType];
 };
