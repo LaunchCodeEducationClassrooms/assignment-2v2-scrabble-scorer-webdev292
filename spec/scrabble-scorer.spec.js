@@ -39,7 +39,7 @@ describe("Scrabble Scorer solution", function() {
 
 	// // newPointStructure tests //
 	it("newPointStructure contains the correct key-value pairs", function() {
-		expect(solution.newPointStructure).toEqual(jasmine.objectContaining({
+		expect(solution.newPointStructure()).toEqual(jasmine.objectContaining({
 			a: 1,
 			e: 1,
 			i: 1,
