@@ -14,7 +14,6 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 let inputWord = '';
-let newPointStructure;
 
 function oldScrabbleScorer(word) {
   word = word.toUpperCase();
@@ -124,7 +123,7 @@ function scorerPrompt(word) {
   return scoringAlgorithms[scoringType];
 };
 
-function transform(oldPointStructure) {
+newPointStructure = function transform(oldPointStructure) {
   let newObj = {};
   for (const [key, value] of Object.entries(oldPointStructure)) {
     value.map(function(val) {
@@ -138,7 +137,7 @@ function transform(oldPointStructure) {
 
 
 function runProgram() {
-  newPointStructure = transform(oldPointStructure);
+  transform(oldPointStructure);
   initialPrompt();
   scorerPrompt();
 }
