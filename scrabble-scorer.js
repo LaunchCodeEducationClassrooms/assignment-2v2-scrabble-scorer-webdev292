@@ -38,7 +38,7 @@ function initialPrompt() {
 };
 
 
-function scrabbleScore(word) {
+function scrabbleScore(word, newPointStructure) {
   let scrabbleScore = 0;
   for (i = 0; i < word.length; i++) {
     scrabbleScore += Number(newPointStructure[word[i].toLowerCase()]);
@@ -46,18 +46,11 @@ function scrabbleScore(word) {
   return scrabbleScore;
 }
 
-let scrabbleScoreObject = {
-  'name': 'scrabble',
-  'description': 'The traditional scroring algorithm',
-  'scorerFunction': function(word) { return scrabbleScorer(word); }
-
-};
-
 function simpleScore(word) {
   return word.length;
 }
 
-function newPointStructure(){
+newPointStructure = function(){
   let transformedObj = transform(oldPointStructure);
   return transformedObj;
 }
@@ -102,7 +95,7 @@ const scoringAlgorithms = [{
   scorerFunction: vowelBonusScore
 },
 {
-  name: "scrabble",
+  name: "scrabbleScore",
   description: "the scroring scoringAlgorithms.",
   scorerFunction: scrabbleScore,
 }
@@ -123,7 +116,7 @@ function scorerPrompt(word) {
     console.log("scorerFunction result: ", scoringAlgorithms[1].scorerFunction(inputWord));
   } else if (scoringType === 2) {
     console.log("algorithm name: ", scoringAlgorithms[2].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[2].scorerFunction(inputWord));
+    console.log("scorerFunction result: ", scoringAlgorithms[2].scorerFunction(inputWord, newPointStructure()));
   }
   return scoringAlgorithms[scoringType];
 };
