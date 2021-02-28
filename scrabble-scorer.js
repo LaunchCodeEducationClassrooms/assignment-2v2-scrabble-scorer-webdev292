@@ -53,14 +53,14 @@ let scrabbleScoreObject = {
 
 };
 
-function simpleScorer(word) {
+function simpleScorr(word) {
   return word.length;
 }
 
 let simpleScoreObject = {
   'name': 'simple score',
   'description': 'each letter worth 1 point',
-  'scorerFunction': function(word) { return simpleScorer(word); }
+  'scorerFunction': function(word) { return simpleScore(word); }
 
 };
 
@@ -89,7 +89,7 @@ let vowelBonusScoreObject = {
 const scoringAlgorithms = [{
   name: "simple score",
   description: "each letter worth 1 point",
-  scorerFunction: simpleScorer
+  scorerFunction: simpleScore
 },
 {
   name: "Bonus vowel",
@@ -149,7 +149,7 @@ module.exports = {
   initialPrompt: initialPrompt,
   transform: transform,
   oldPointStructure: oldPointStructure,
-  simpleScorer: simpleScorer,
+  simpleScore: simpleScore,
   vowelBonusScore: vowelBonusScore,
   scrabbleScore: scrabbleScore,
   scoringAlgorithms: scoringAlgorithms,
