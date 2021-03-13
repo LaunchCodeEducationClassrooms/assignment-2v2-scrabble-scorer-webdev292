@@ -40,9 +40,8 @@ function initialPrompt() {
 
 function scrabbleScore(word, newPointStructure) {
   let scrabbleScore = 0;
-  let newStructure = newPointStructure();
   for (i = 0; i < word.length; i++) {
-    scrabbleScore += newStructure[word[i].toLowerCase()];
+    scrabbleScore += newPointStructure[word[i].toLowerCase()];
   }
   return scrabbleScore;
 }
@@ -105,7 +104,7 @@ function scorerPrompt(word) {
 
   } else if (scoringType === 2) {
     console.log("algorithm name: ", scoringAlgorithms[2].name);
-    console.log("scorer Function result: ", scoringAlgorithms[2].scoringFunction(inputWord, newPointStructure));
+    console.log("scorer Function result: ", scoringAlgorithms[2].scoringFunction(inputWord, newPointStructure()));
   }
 
   return scoringAlgorithms[scoringType];
