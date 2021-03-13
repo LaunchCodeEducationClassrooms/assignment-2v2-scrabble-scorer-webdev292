@@ -91,20 +91,21 @@ function scorerPrompt(word) {
   scoringType = input.keyInSelect(scoringAlgorithms, `Which scoring algorithm would you like to use?
    \n1 - Simple: One point per character 
    \n2 - Vowel Bonus: Vowels are worth 3 points
-   \n3 - Scrabble: Uses scrabble point system`, {cancel:false});
+   \n3 - Scrabble: Uses scrabble point system
+   \n Enter 1, 2, or 3: `, {cancel:false, guide: false});
   
-  console.log('Seleted algorithm is ', scoringAlgorithms[scoringType])
+  console.log('\nSeleted algorithm is ', scoringAlgorithms[scoringType])
   if (scoringType === 0) {
-    console.log("algorithm name: ", scoringAlgorithms[0].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[0].scoringFunction(inputWord));
+    console.log("\nalgorithm name: ", scoringAlgorithms[0].name);
+    console.log("\nscorerFunction result: ", scoringAlgorithms[0].scoringFunction(inputWord));
     
   } else if (scoringType === 1) {
-    console.log("algorithm name: ", scoringAlgorithms[1].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[1].scoringFunction(inputWord));
+    console.log("\nalgorithm name: ", scoringAlgorithms[1].name);
+    console.log("\nscorerFunction result: ", scoringAlgorithms[1].scoringFunction(inputWord));
 
   } else if (scoringType === 2) {
-    console.log("algorithm name: ", scoringAlgorithms[2].name);
-    console.log("scorer Function result: ", scoringAlgorithms[2].scoringFunction(inputWord, newPointStructure()));
+    console.log("\nalgorithm name: ", scoringAlgorithms[2].name);
+    console.log("\nscorer Function result: ", scoringAlgorithms[2].scoringFunction(inputWord, newPointStructure()));
   }
 
   return scoringAlgorithms[scoringType];
