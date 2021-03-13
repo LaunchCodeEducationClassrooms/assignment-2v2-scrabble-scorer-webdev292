@@ -40,8 +40,9 @@ function initialPrompt() {
 
 function scrabbleScore(word, newPointStructure) {
   let scrabbleScore = 0;
+  let newStructure = newPointStructure();
   for (i = 0; i < word.length; i++) {
-    scrabbleScore += Number(newPointStructure[word[i].toLowerCase()]);
+    scrabbleScore += newStructure[word[i].toLowerCase()];
   }
   return scrabbleScore;
 }
@@ -50,7 +51,7 @@ function simpleScore(word) {
   return word.length;
 }
 
-newPointStructure = function(){
+newPointStructure = function() {
   let transformedObj = transform(oldPointStructure);
   return transformedObj;
 }
@@ -83,31 +84,34 @@ const scoringAlgorithms = [{
 {
   name: "scrabbleScore",
   description: "the scroring scoringAlgorithms.",
-  scoringFunction: scrabbleScore,
+  scoringFunction: scrabbleScore
 }
 ];
 
 function scorerPrompt(word) {
   scoringType = input.keyInSelect(scoringAlgorithms, `Which scoring algorithm would you like to use?
-   \n0 - Simple: One point per character 
-   \n1 - Vowel Bonus: Vowels are worth 3 points
-   \n2 - Scrabble: Uses scrabble point system`);
-
+   \n1 - Simple: One point per character 
+   \n2 - Vowel Bonus: Vowels are worth 3 points
+   \n3 - Scrabble: Uses scrabble point system`, {cancel:false});
+  
   console.log('Seleted algorithm is ', scoringAlgorithms[scoringType])
   if (scoringType === 0) {
     console.log("algorithm name: ", scoringAlgorithms[0].name);
     console.log("scorerFunction result: ", scoringAlgorithms[0].scoringFunction(inputWord));
+    
   } else if (scoringType === 1) {
     console.log("algorithm name: ", scoringAlgorithms[1].name);
     console.log("scorerFunction result: ", scoringAlgorithms[1].scoringFunction(inputWord));
+
   } else if (scoringType === 2) {
     console.log("algorithm name: ", scoringAlgorithms[2].name);
-    console.log("scorerFunction result: ", scoringAlgorithms[2].scoringFunction(inputWord, newPointStructure()));
+    console.log("scorer Function result: ", scoringAlgorithms[2].scoringFunction(inputWord, newPointStructure));
   }
+
   return scoringAlgorithms[scoringType];
 };
 
- function transform(oldPointStructure) {
+function transform(oldPointStructure) {
   let newObj = {};
   for (const [key, value] of Object.entries(oldPointStructure)) {
     value.map(function(val) {
